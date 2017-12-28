@@ -31,8 +31,14 @@ triplet_loss_fun = LossFunction(all_triplets=False,
                                 margin=0.3, mu=1.)
 ```
 
+## Foward
+```python
+loss = triplet_loss_fun(features, labels)
+accuracy = triplet_loss_fun.accuracy
+```
 
-### optional arguments
+
+## optional arguments
 
 #### sample strategy:
 + SampleMethod_ALL
@@ -47,8 +53,3 @@ triplet_loss_fun = LossFunction(all_triplets=False,
 #### mu
 + This parameter is adopted for keep a balance between the intra-class loss for postive pairs and the triplet distance.
 + mu=1. is highly recommend, which means that we ignore the intra-class loss.
-
-## Foward
-```python
-loss, accuracy = triplet_loss_fun(features, labels)
-```

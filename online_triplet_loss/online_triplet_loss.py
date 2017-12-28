@@ -88,10 +88,11 @@ class OnlineTripletLoss(torch.nn.Module):
         self.margin_type = margin_type
         self.margin = margin
         self.mu = mu
+        self.accuracy = 0.
 
     def forward(self, features, label):
         loss_fun = OnlineTripletLossFunction(self.all_triplets, self.positive_type, self.negative_type,
                                              self.margin_type, self.margin, self.mu)
         loss = loss_fun(features, label)
-        accuracy = loss_fun.accuracy
-        return loss, accuracy
+        self.accuracy = loss_fun.accuracy
+        return loss
